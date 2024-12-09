@@ -118,3 +118,12 @@ body{
     padding-left: 0;
     padding-right: 0;
 }
+
+.f-info-socials:hover{
+    cursor: pointer;
+}
+
+.btn-warning:hover{
+    background-color: white !important;
+    color: #ffc107 !important;
+}

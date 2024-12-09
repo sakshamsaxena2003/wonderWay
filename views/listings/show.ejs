@@ -9,13 +9,15 @@
         <div class="card-body">
             <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
             <p class="card-text"><%= listing.description %></p>
-            <p class="card-text">&#8377;<%= listing.price.toLocaleString("en-IN") %></p>
+            <p class="card-text">&#8377;<%= listing.price.toLocaleString("en-IN") %> / per night</p>
             <p class="card-text"><%= listing.location %></p>
             <p class="card-text"><%= listing.country %></p>
         </div>
     </div>
 
     <br>
+
+    <div><button type="button" class="btn btn-warning" style="position: absolute; top: 87%; right: 24%;">Book Now!</button></div>
 
     <% if(currUser && listing.owner._id.equals(currUser.id)) {%>
     <div class="btns">
@@ -24,11 +26,12 @@
         <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
             <button class="btn btn-dark offset-5">Delete</button>
         </form>
+
     </div>
     <% } %>
 
     <div class="col-8 offset-3 mb-5">
-        <hr>
+        <hr style="width: 90%; margin-top: 30px;">
         <% if(currUser) {%>
         <h4>Leave a Review</h4>
         <form method="post" action="/listings/<%= listing._id %>/reviews" novalidate class="needs-validation">
@@ -50,12 +53,12 @@
             </div>
             <div class="mb-3 mt-2">
                 <label for="comment" class="form-label">Comments</label>
-                <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+                <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" style="width: 80%; border: 0.5px solid grey;" required></textarea>
                 <div class="invalid-feedback">Please add some comments for review</div>
             </div>
             <button class="btn btn-outline-dark">Submit</button>
         </form>
-        <hr>
+        <hr style="width: 92%;">
         <% } %>
 
         <p><b>All Reviews</b></p>

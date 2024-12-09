@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-      folder: 'wonderWay_DEV',
+      folder: 'wonder',
       allowedFormats: ["png", "jpg", "jpeg"],
     },
 });

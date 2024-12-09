@@ -2,6 +2,7 @@ const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
+    // console.log(allListings);
     res.render("listings/index.ejs", { allListings });
 }
 
@@ -23,15 +24,17 @@ module.exports.showListing = async (req, res) => {
         req.flash("error", "Listing you requested does not exist!");
         res.redirect("/listings");
     }
-    console.log(listing);
     res.render("listings/show.ejs", {listing});
 }
 
 module.exports.createListing = async (req, res, next) => {
+    console.log("dhadqdm");
     let url = req.file.path;
     let filename = req.file.filename;
 
     const newListing = new Listing(req.body.listing);
+    console.log("dhadqdm");
+    console.log(newListing);
     newListing.image.url = url;
     newListing.image.filename = filename;
     newListing.owner = req.user._id;

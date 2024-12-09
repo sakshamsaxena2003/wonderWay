@@ -13,6 +13,7 @@ module.exports.isLoggedIn = (req, res, next) => {
         req.flash("error", "you must be logged to create listings");
         return res.redirect("/login");
     }
+    console.log("login term");
     next();
 };
 
@@ -34,12 +35,14 @@ module.exports.isOwner = async (req, res, next) => {
 };
 
 module.exports.validateListing = (req, res, next) => {
+    console.log("inside validate listing");
     let { error } = listingSchema.validate(req.body);
     if(error){
         let errMsg = error.details.map((el) => el.message).join(",");
         throw new ExpressError(400, errMsg);
     }
     else{
+        console.log("validating done!");
         next();
     }
 };
